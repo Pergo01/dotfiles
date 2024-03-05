@@ -1,0 +1,158 @@
+* {
+    font-family: Roboto, Helvetica, Arial, sans-serif, "FontAwesome 6 Free";
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 0px;
+    min-height: 0px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 0px solid #ffffff;
+    background: transparent;
+}
+
+#workspaces {
+    margin: 10px 1px 10px 1px;
+    padding: 0px 1px;
+    border-radius: 15px;
+    border: 0px;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 12px;
+    background: white;
+}
+
+#workspaces button {
+    padding: 0px 0px;
+    margin: 4px 2px;
+    border-radius: 13px;
+    border: 0px;
+    color: white;
+    background-color: pink;
+    opacity: 0.5;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    padding: 0px 0px;
+    margin: 4px 2px;
+    color: red;
+    background: red;
+    border-radius: 13px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.7;
+}
+
+#window {
+    margin: 10px 1px 10px 1px;
+    padding: 2px 10px 0px 10px;
+    border-radius: 15px;
+    border: 0px;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 12px;
+    background: white;
+    color: red;
+}
+
+window#waybar.empty #window {  
+    background:none;  
+}  
+
+
+#workspaces button:hover {
+    color: white;
+    background: greenyellow;
+    border-radius: 15px;
+}
+
+#custom-appmenu {
+    background-color:red;
+    opacity: 0.8;
+    font-size: 12px;
+    color: white;
+    border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 10px 2px 10px 10px;
+    border: 3px solid white;
+}
+
+#custom-poweroff {
+    background-color:red;
+    opacity: 0.8;
+    font-size: 12px;
+    color: white;
+    border-radius: 15px;
+    padding: 2px 10px 2px 10px;
+    margin: 10px 10px 10px 1px;
+    border: 3px solid white;
+}
+
+#hardware {
+    background-color:white;
+    opacity: 0.8;
+    font-size: 12px;
+    color: red;
+    border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 10px 1px 10px 1px;
+    border: 0px solid white;
+}
+
+#clock {
+    background-color:white;
+    opacity: 0.8;
+    font-size: 12px;
+    color: red;
+    border-radius: 15px;
+    padding: 4px 10px 0px 10px;
+    margin: 10px 1px 10px 1px;
+    border: 0px solid white;
+}
+
+#pulseaudio, #backlight, #network {
+    background-color:white;
+    opacity: 0.8;
+    font-size: 12px;
+    color: red;
+    border-radius: 15px;
+    padding: 2px 10px 2px 10px;
+    margin: 10px 1px 10px 1px;
+    border: 0px solid white;
+}
+
+#custom-chromium {
+    background-color:red;
+    opacity: 0.8;
+    font-size: 12px;
+    color: white;
+    border-radius: 15px;
+    padding: 2px 10px 2px 10px;
+    margin: 10px 1px 10px 10px;
+    border: 3px solid white;
+}
+
+#custom-file-manager, #custom-vscode,
+#custom-armcord, #custom-notifications, #custom-terminal {
+    background-color:red;
+    opacity: 0.8;
+    font-size: 12px;
+    color: white;
+    border-radius: 15px;
+    padding: 2px 10px 2px 10px;
+    margin: 10px 1px 10px 1px;
+    border: 3px solid white;
+}
+
+#tray {
+    background-color:red;
+    opacity: 0.8;
+    font-size: 12px;
+    color: white;
+    border-radius: 15px;
+    padding: 2px 10px 2px 10px;
+    margin: 10px 1px 10px 1px;
+    border: 3px solid white;
+}

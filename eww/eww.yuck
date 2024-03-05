@@ -1,0 +1,141 @@
+;; ** Variables ***********************************************************************
+
+;; Time vars
+(defpoll TIME :interval "1s" `date +%H:%M:%S`)
+
+;;Date vars
+(defpoll DATE :interval "1s" `date +%d/%m/%y`)
+
+;; System vars
+(defpoll VOLUME :interval "0.1s" `scripts/system.sh volume`)
+(defpoll BRIGHTNESS :interval "0.1s" `scripts/system.sh brightness`)
+
+;; ** Widgets *************************************************************************
+
+;; time
+(defwidget datetime [] 
+		(box :class "wid_get"
+			(box :class "clockbox" :orientation "v" :spacing 0 :valign "center" :halign "center" :space-evenly "true" :vexpand "false" :hexpand "false"
+				(label :class "hour" :halign "center" :wrap "true" :limit-width 25 :text TIME)
+                (label :class "date" :halign "center" :wrap "true" :limit-width 25 :text DATE))))
+
+(defwidget vscode [] 
+	(box :class "wid_get" :vexpand "false" :hexpand "false" 
+		(button :style "background-image: url('icons/vscode.svg'); background-size: cover" :class "vscode" :onclick "code &")))
+
+(defwidget chromium [] 
+	(box :class "wid_get" :vexpand "false" :hexpand "false" 
+		(button :style "background-image: url('icons/chrome.svg'); background-size: cover;" :class "chromium" :onclick "chromium-browser &")))
+
+(defwidget terminal [] 
+	(box :class "wid_get" :vexpand "false" :hexpand "false" 
+		(button :style "background-image: url('icons/terminal.svg'); background-size: cover;" :class "terminal" :onclick "kitty &")))
+
+(defwidget discord [] 
+	(box :class "wid_get" :vexpand "false" :hexpand "false" 
+		(button :style "background-image: url('icons/discord.svg'); background-size: cover;" :class "discord" :onclick "flatpak run xyz.armcord.ArmCord &")))
+
+;; system
+(defwidget volume [] 
+	(box :class "wid_get" :vexpand "false" :hexpand "false"   
+			(box :class "volume_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				(label :class "iconvolume" :text "")
+				(scale :min 0 :max 100 :value VOLUME :onchange "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ {}%" ))))
+
+;; brightness
+(defwidget brightness [] 
+    (box :class "wid_get" :vexpand "false" :hexpand "false"
+	    (box :class "brightness_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+				(label :class "iconbrightness" :text "󰃟")
+				(scale :min 0 :max 100 :value BRIGHTNESS :onchange "brightnessctl set {}%"))))
+
+;; ** Windows *************************************************************************
+
+;; time
+(defwindow datetime
+           :monitor 0
+           :geometry (geometry :x "475px"
+                               :y "200px"
+                               :width "275px"
+                               :height "275px"
+                               :anchor "top left")
+           :stacking "bottom"
+(datetime))
+
+;; vscode
+(defwindow vscode
+           :monitor 0
+           :geometry (geometry :x "760px"
+                               :y "200px"
+                               :width "132.5px"
+                               :height "132.5px"
+                               :anchor "top left")
+           :stacking "bottom"
+           ;;:reserve (struts :distance "80px" :side "top")
+           :windowtype "dock"
+(vscode))
+
+;; chromium
+(defwindow chromium
+           :monitor 0
+           :geometry (geometry :x "760px"
+                               :y "342.5px"
+                               :width "132.5px"
+                               :height "132.5px"
+                               :anchor "top left")
+           :stacking "bottom"
+           ;;:reserve (struts :distance "80px" :side "top")
+           :windowtype "dock"
+(chromium))
+
+;; terminal
+(defwindow terminal
+           :monitor 0
+           :geometry (geometry :x "902.5px"
+                               :y "200px"
+                               :width "132.5px"
+                               :height "132.5px"
+                               :anchor "top left")
+           :stacking "bottom"
+           ;;:reserve (struts :distance "80px" :side "top")
+           :windowtype "dock"
+(terminal))
+
+;; discord
+(defwindow discord
+           :monitor 0
+           :geometry (geometry :x "902.5px"
+                               :y "342.5px"
+                               :width "132.5px"
+                               :height "132.5px"
+                               :anchor "top left")
+           :stacking "bottom"
+           ;;:reserve (struts :distance "80px" :side "top")
+           :windowtype "dock"
+(discord))
+
+;; volume
+(defwindow volume
+           :monitor 0
+           :geometry (geometry :x "475px"
+                               :y "485px"
+                               :width "250px"
+                               :height "132.5px"
+                               :anchor "top left")
+           :stacking "background"
+           ;;:reserve (struts :distance "80px" :side "top")
+           :windowtype "dock"
+(volume))
+
+;; brightness
+(defwindow brightness
+           :monitor 0
+           :geometry (geometry :x "760px"
+                               :y "485px"
+                               :width "250px"
+                               :height "132.5px"
+                               :anchor "top left")
+           :stacking "background"
+           ;;:reserve (struts :distance "80px" :side "top")
+           :windowtype "dock"
+(brightness))

@@ -1,0 +1,179 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+    "name": "top",
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "modules-left": [
+      "custom/appmenu",
+      "hyprland/workspaces",
+      "hyprland/window"
+    ],
+    "hyprland/workspaces": {
+      "on-click": "activate",
+      "active-only": false,
+      "all-outputs": true,
+      "format": "",
+      "format-icons": {
+        "urgent": "",
+        "active": "",
+        "default": ""
+      }
+    },
+    "custom/appmenu": {
+      "format": "Apps",
+      "on-click": "sleep 0.1; wofi --show drun &"
+    },
+    "hyprland/window": {
+      "format": "{title}",
+      "max-length": 65,
+      "separate-outputs": true
+    },
+    "modules-right": [
+      "group/hardware",
+      "custom/notifications",
+      "custom/poweroff"
+    ],
+    "group/hardware": {
+      "orientation": "horizontal",
+      "modules": [
+        "battery",
+        "disk",
+        "cpu",
+        "memory"
+      ]
+    },
+    "disk": {
+      "format": "{percentage_used}%  / ",
+      "format-icons": {
+        "default": ""
+      }
+    },
+    "cpu": {
+      "format": "{usage}%  / ",
+      "tooltip": false
+    },
+    "memory": {
+      "format": "{}% "
+    },
+    "custom/poweroff": {
+      "format": "",
+      "on-click": "sleep 0.1; wlogout &"
+    },
+    "battery": {
+      "format": "{capacity}% {icon} / ",
+      "format-icons": {
+        "charging": "",
+        "discharging": "",
+        "charged": "",
+        "default": ""
+      }
+    },
+    "custom/notifications": {
+      "format": "",
+      "on-click": "sleep 0.1; swaync-client -t -sw &"
+    }
+  },
+  {
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "spacing": 4,
+    "name": "bottom",
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "modules-left": [
+      "custom/chromium",
+      "custom/file-manager",
+      "custom/vscode",
+      "custom/terminal",
+      "custom/armcord"
+    ],
+    "custom/chromium": {
+      "format": "",
+      "on-click": "chromium-browser"
+    },
+    "custom/file-manager": {
+      "format": "",
+      "on-click": "nautilus"
+    },
+    "custom/vscode": {
+      "format": "",
+      "on-click": "code"
+    },
+    "custom/armcord": {
+      "format": "",
+      "on-click": "flatpak run xyz.armcord.ArmCord"
+    },
+    "custom/terminal": {
+      "format": "",
+      "on-click": "kitty"
+    },
+    "modules-right": [
+      "backlight",
+      "pulseaudio",
+      "network",
+      "tray"
+    ],
+    "tray": {
+      "icon-size": 12
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-bluetooth": " {icon} {volume}%",
+      "format-bluetooth-muted": " {icon}",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": [
+          "",
+          "",
+          ""
+        ]
+      },
+      "on-click": "~/.config/waybar/scripts/audio_changer.py"
+    },
+    "clock": {
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "format-alt": "{:%Y-%m-%d}"
+    },
+    "network": {
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      "on-right-click": "nm-connection-editor"
+    },
+    "backlight": {
+      "format": " {percent}%",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "modules-center": [
+      "clock"
+    ]
+  }
+]

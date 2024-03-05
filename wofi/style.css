@@ -1,0 +1,56 @@
+window {
+    opacity: 0.9;
+    border: 0px;
+    border-radius: 20px;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+#input {
+	border-radius: 20px 20px 0px 0px;
+    padding: 10px;
+	border: none;
+    margin: 0px;
+    font-size: 28px;
+	color: red;
+	background-color: black;
+	opacity: 0.9;
+	border-bottom: 2px solid red;
+}
+
+
+#inner-box {
+	margin: 0px;
+	color: red;
+	opacity: 0.9;
+	border-radius: 0px 0px 20px 20px;
+}
+
+#outer-box {
+	margin: 0px;
+	background-color: black;
+    border-radius: 20px;
+	color: red;
+	border: 2px solid red;
+}
+
+#selected {
+	color: white;
+	font-size:22px;
+}
+
+#entry {
+	padding: 0px;
+    margin: 0px;
+	background-color: black;
+	opacity: 0.9;
+}
+
+#scroll {
+	margin: 5px;
+	border-radius: 0px 0px 15px 15px;
+}
+
+#text {
+	margin: 0px;
+}

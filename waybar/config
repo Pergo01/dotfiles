@@ -31,7 +31,6 @@
     },
     "hyprland/window": {
       "format": "{title}",
-      "max-length": 65,
       "separate-outputs": true
     },
     "modules-right": [
@@ -86,26 +85,25 @@
     "spacing": 4,
     "name": "bottom",
     "margin-top": 0,
-    "margin-left": 0,
-    "margin-right": 0,
+    "margin-left": 10,
+    "margin-right": 10,
     "margin-bottom": 0,
     "modules-left": [
-      "custom/chromium",
+      "custom/zen-browser",
       "custom/file-manager",
       "custom/vscode",
-      "custom/terminal",
-      "custom/armcord"
+      "custom/terminal"
     ],
-    "custom/chromium": {
-      "format": "",
-      "on-click": "chromium-browser"
+    "custom/zen-browser": {
+      "format": " ",
+      "on-click": "zen-browser"
     },
     "custom/file-manager": {
       "format": "",
-      "on-click": "nautilus"
+      "on-click": "dolphin"
     },
     "custom/vscode": {
-      "format": "",
+      "format": "",
       "on-click": "code"
     },
     "custom/armcord": {
@@ -117,7 +115,7 @@
       "on-click": "kitty"
     },
     "modules-right": [
-      "backlight",
+      "custom/brightness",
       "pulseaudio",
       "network",
       "tray"
@@ -126,7 +124,7 @@
       "icon-size": 12
     },
     "pulseaudio": {
-      "format": "{icon} {volume}%",
+      "format": "{volume}% {icon}",
       "format-bluetooth": " {icon} {volume}%",
       "format-bluetooth-muted": " {icon}",
       "format-muted": "",
@@ -147,7 +145,9 @@
     },
     "clock": {
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-      "format-alt": "{:%Y-%m-%d}"
+      "format": "{:%H:%M:%S}",
+      "format-alt": "{:%d/%m/%Y}",
+      "interval": 1
     },
     "network": {
       "format-wifi": "{essid} ({signalStrength}%) ",
@@ -158,8 +158,9 @@
       "format-alt": "{ifname}: {ipaddr}/{cidr}",
       "on-right-click": "nm-connection-editor"
     },
-    "backlight": {
-      "format": " {percent}%",
+    "custom/brightness": {
+      "format": "{}% ",
+      "signal": 8,
       "format-icons": [
         "",
         "",
@@ -170,7 +171,13 @@
         "",
         "",
         ""
-      ]
+      ],
+      "exec": "~/.config/waybar/scripts/brightness-per-monitor.sh get",
+      "on-scroll-up": "~/.config/waybar/scripts/brightness-per-monitor.sh up",
+      "on-scroll-down": "~/.config/waybar/scripts/brightness-per-monitor.sh down",
+      "on-click": "~/.config/waybar/scripts/brightness-per-monitor.sh left_click",
+      "on-click-right": "~/.config/waybar/scripts/brightness-per-monitor.sh right_click",
+      "tooltip-format": "Monitor Brightness\\nScroll: adjust\\nLeft click: 100%\\nRight click: 0%"
     },
     "modules-center": [
       "clock"

@@ -1,9 +1,7 @@
 #!/bin/bash
 if [ "$1" == "brightness" ]; then
-    brightness=$(brightnessctl g)
-    brightness_percent=$(echo "scale=2; $brightness / 500 * 100" | bc)
-    LC_NUMERIC="en_US.UTF-8" rounded_brightness_percent=$(printf "%.2f" "$brightness_percent")
-    echo "$rounded_brightness_percent"
+    read -r vcp feature_code c brightness max_brightness < <(ddcutil getvcp 10 --brief)
+    echo "${brightness}"
 
 
 elif [ "$1" == "volume" ]; then

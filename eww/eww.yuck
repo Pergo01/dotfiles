@@ -8,7 +8,7 @@
 
 ;; System vars
 (defpoll VOLUME :interval "0.1s" `scripts/system.sh volume`)
-(defpoll BRIGHTNESS :interval "0.1s" `scripts/system.sh brightness`)
+(defpoll BRIGHTNESS :interval "1s" `scripts/system.sh brightness`)
 
 ;; ** Widgets *************************************************************************
 
@@ -21,41 +21,41 @@
 
 (defwidget vscode [] 
 	(box :class "wid_get" :vexpand "false" :hexpand "false" 
-		(button :style "background-image: url('icons/vscode.svg'); background-size: cover" :class "vscode" :onclick "code &")))
+		(button :style "background-image: url('icons/vscode.svg'); background-size: cover" :class "vscode" :onclick "code")))
 
-(defwidget chromium [] 
+(defwidget zen-browser []
 	(box :class "wid_get" :vexpand "false" :hexpand "false" 
-		(button :style "background-image: url('icons/chrome.svg'); background-size: cover;" :class "chromium" :onclick "chromium-browser &")))
+		(button :style "background-image: url('icons/zen-browser.svg'); background-size: cover;" :class "zen-browser" :onclick "zen-browser &")))
 
 (defwidget terminal [] 
 	(box :class "wid_get" :vexpand "false" :hexpand "false" 
 		(button :style "background-image: url('icons/terminal.svg'); background-size: cover;" :class "terminal" :onclick "kitty &")))
 
-(defwidget discord [] 
+(defwidget file-manager [] 
 	(box :class "wid_get" :vexpand "false" :hexpand "false" 
-		(button :style "background-image: url('icons/discord.svg'); background-size: cover;" :class "discord" :onclick "flatpak run xyz.armcord.ArmCord &")))
+		(button :style "background-image: url('icons/folder.svg'); background-size: cover;" :class "folder" :onclick "dolphin &")))
 
-;; system
+;; volume
 (defwidget volume [] 
-	(box :class "wid_get" :vexpand "false" :hexpand "false"   
-			(box :class "volume_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+	(box :class "wid_get" :vexpand "false" :hexpand "true"   
+			(box :class "volume_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "true" 
 				(label :class "iconvolume" :text "")
 				(scale :min 0 :max 100 :value VOLUME :onchange "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ {}%" ))))
 
 ;; brightness
 (defwidget brightness [] 
-    (box :class "wid_get" :vexpand "false" :hexpand "false"
-	    (box :class "brightness_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false" 
+    (box :class "wid_get" :vexpand "false" :hexpand "true"
+	    (box :class "brightness_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "true" 
 				(label :class "iconbrightness" :text "󰃟")
-				(scale :min 0 :max 100 :value BRIGHTNESS :onchange "brightnessctl set {}%"))))
+				(scale :min 0 :max 100 :value BRIGHTNESS :onchange "ddcutil setvcp 10 {} && sleep 1"))))
 
 ;; ** Windows *************************************************************************
 
-;; time
+;; date and time
 (defwindow datetime
            :monitor 0
-           :geometry (geometry :x "475px"
-                               :y "200px"
+           :geometry (geometry :x "1438.5px"
+                               :y "395px"
                                :width "275px"
                                :height "275px"
                                :anchor "top left")
@@ -65,8 +65,8 @@
 ;; vscode
 (defwindow vscode
            :monitor 0
-           :geometry (geometry :x "760px"
-                               :y "200px"
+           :geometry (geometry :x "1727.5px"
+                               :y "395px"
                                :width "132.5px"
                                :height "132.5px"
                                :anchor "top left")
@@ -75,24 +75,24 @@
            :windowtype "dock"
 (vscode))
 
-;; chromium
-(defwindow chromium
+;; zen-browser
+(defwindow zen-browser
            :monitor 0
-           :geometry (geometry :x "760px"
-                               :y "342.5px"
+           :geometry (geometry :x "1727.5px"
+                               :y "537.5px"
                                :width "132.5px"
                                :height "132.5px"
                                :anchor "top left")
            :stacking "bottom"
            ;;:reserve (struts :distance "80px" :side "top")
            :windowtype "dock"
-(chromium))
+(zen-browser))
 
 ;; terminal
 (defwindow terminal
            :monitor 0
-           :geometry (geometry :x "902.5px"
-                               :y "200px"
+           :geometry (geometry :x "1872px"
+                               :y "395px"
                                :width "132.5px"
                                :height "132.5px"
                                :anchor "top left")
@@ -101,25 +101,25 @@
            :windowtype "dock"
 (terminal))
 
-;; discord
-(defwindow discord
+;; file-manager
+(defwindow file-manager
            :monitor 0
-           :geometry (geometry :x "902.5px"
-                               :y "342.5px"
+           :geometry (geometry :x "1872px"
+                               :y "537.5px"
                                :width "132.5px"
                                :height "132.5px"
                                :anchor "top left")
            :stacking "bottom"
            ;;:reserve (struts :distance "80px" :side "top")
            :windowtype "dock"
-(discord))
+(file-manager))
 
 ;; volume
 (defwindow volume
            :monitor 0
-           :geometry (geometry :x "475px"
-                               :y "485px"
-                               :width "250px"
+           :geometry (geometry :x "1438.5px"
+                               :y "680px"
+                               :width "275px"
                                :height "132.5px"
                                :anchor "top left")
            :stacking "background"
@@ -130,9 +130,9 @@
 ;; brightness
 (defwindow brightness
            :monitor 0
-           :geometry (geometry :x "760px"
-                               :y "485px"
-                               :width "250px"
+           :geometry (geometry :x "1727.5px"
+                               :y "680px"
+                               :width "275px"
                                :height "132.5px"
                                :anchor "top left")
            :stacking "background"
